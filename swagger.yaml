@@ -6,8 +6,8 @@ info:
 servers:
   - url: http://localhost:3000/
     description: Optional server description, e.g. Main (production) server
-  - url: http://staging-api.example.com
-    description: Optional server description, e.g. Internal staging server for testing
+#  - url: http://staging-api.example.com
+#    description: Optional server description, e.g. Internal staging server for testing
 paths:
   /user:
     get:
@@ -23,3 +23,34 @@ paths:
                 items:
                   type: string
 
+    post:
+      summary: Save user.
+      description: Optional extended description in CommonMark or HTML.
+      responses:
+        '200':
+          description: Save user object.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+
+  /user/{id}:
+    get:
+      summary: Returns a user.
+      description: Optional extended description in CommonMark or HTML.
+      parameters:
+        - name: id
+          type: string
+          in: path
+          required: true
+      responses:
+        '200':    # status code
+          description: A JSON Object of User
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  type: string
